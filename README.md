@@ -81,6 +81,31 @@ Same requirements and streaming notes as above.
 
 ---
 
+## Gamepad control (vrxrctl)
+
+`vrxrctl.exe` is a tiny, dependency-free Windows helper that `vrhevc.bat` launches alongside OBS and ffmpeg. It reads your gamepad and sends a small UDP control signal to the headset and phone — so your PC controller can drive the view while you're in VR.
+
+**L3 + R3 (click both thumbsticks at once) toggles the screen mode:**
+
+* **Full FOV** — the picture fills your whole view (default, most immersive).
+* **Fit / virtual screen** — the picture pulls back into a framed panel so you can see the *entire* screen at once: all four edges, menus, minimaps, chat, anything tucked in the corners. Tap L3+R3 to pop out and read whatever you need, tap again to snap right back to full FOV.
+
+Works the same on Pico, Quest and the phone, and stays in sync across them.
+
+**Targeting — the `PHONE_IP` line:**
+
+`vrxrctl` auto-broadcasts across your LAN, so **the headset needs no setup** — leave the IP blank. The **phone needs its IP** (it only accepts unicast), so set it in the bat:
+
+```bat
+REM Phone toggle: put your phone's LAN IP here. Leave blank if you only use a headset.
+set PHONE_IP=
+start "" "%~dp0vrxrctl.exe" %PHONE_IP%
+```
+
+Blank `PHONE_IP` = broadcast only (headset works, phone inactive). Set it (e.g. `set PHONE_IP=192.168.0.50`) and the phone gets the toggle too.
+
+---
+
 ## Notes & limitations
 
 * **8-bit SDR only.** HDR / 10-bit streams aren't handled by the decode path.
