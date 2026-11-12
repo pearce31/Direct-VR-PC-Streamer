@@ -164,6 +164,18 @@ A lightweight Android phone client for a **phone-in-viewer** (Cardboard-style) h
 
 ---
 
+## Lume Pad 2 — glasses-free 3D (vrstream)
+
+On the **Lume Pad 2**, `vrstream` shows the same HEVC SBS stream in **glasses-free 3D** on the tablet's Leia lightfield panel — no headset or viewer mount. It builds the interlaced weave, turns on the 3D backlight, and feeds the decoded SBS straight to the panel, with head tracking steering the views.
+
+* Same UDP :5000 SBS stream from either source (PC or ShieldCast).
+* Depth strength and 3D mode are set at the source, as usual.
+* Needs a Lume Pad 2 (Leia panel).
+
+Download: [vrstream-lumepad.apk](./vrstream-lumepad.apk)
+
+---
+
 ## Gamepad control (vrxrctl)
 
 `vrxrctl.exe` is a tiny, dependency-free Windows helper that `vrhevc.bat` launches alongside OBS and ffmpeg. It reads your gamepad and sends a small UDP control signal to the headset and phone — so your PC controller can drive the view while you're in VR.
